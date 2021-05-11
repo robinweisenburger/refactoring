@@ -4,17 +4,19 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 public class Customer {
-    private String name;
-    private Vector rentals = new Vector();
+    private final String name;
+    private final Vector rentals = new Vector();
     public Customer (String newname){
         name = newname;
-    };
+    }
+
     public void addRental(Rental arg) {
         rentals.addElement(arg);
-    };
+    }
+
     public String getName (){
         return name;
-    };
+    }
 
     public String statement() {
         Enumeration enum_rentals = rentals.elements();
@@ -24,11 +26,11 @@ public class Customer {
         while (enum_rentals.hasMoreElements()) {
             Rental each = (Rental) enum_rentals.nextElement();
             //show figures for this rental
-            result += "\t" + each.getMovie().getTitle()+ "\t" + "\t" + each.getDaysRented() + "\t" + String.valueOf(each.getCharge()) + "\n";
+            result += "\t" + each.getMovie().getTitle()+ "\t" + "\t" + each.getDaysRented() + "\t" + each.getCharge() + "\n";
         }
         //add footer lines
-        result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
-        result += "You earned " + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points";
+        result += "Amount owed is " + getTotalCharge() + "\n";
+        result += "You earned " + getTotalFrequentRenterPoints() + " frequent renter points";
         return result;
     }
 
