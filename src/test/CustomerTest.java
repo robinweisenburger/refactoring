@@ -15,7 +15,6 @@ public class CustomerTest {
     private Movie newMovie;
     private Rental testRental;
     private Customer testCustomer;
-    private Customer testStatementCustomer;
 
     @Before
     public void setUp(){
@@ -39,7 +38,7 @@ public class CustomerTest {
     @Test
     public void getStatement(){
         //Test regular movie
-        testStatementCustomer = new Customer("Jon");
+        Customer testStatementCustomer = new Customer("Jon");
         testStatementCustomer.addRental(new Rental(regularMovie, 5));
         assertEquals(testStatementCustomer.statement(), "Rental Record for Jon\n" +
                 "\tTitle\t\tDays\tAmount\n" +
